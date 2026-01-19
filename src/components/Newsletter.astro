@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 ---
 
 <div class="w-full max-w-md mx-auto p-6 rounded-xl" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
@@ -21,20 +22,7 @@
 			</div>
 			<button type="submit" class="newsletter-button">
 				<span class="flex items-center justify-center gap-2">
-					<svg
-						class="w-5 h-5"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
-						xmlns="http://www.w3.org/2000/svg"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-						></path>
-					</svg>
+					<Icon name="heroicons:envelope" class="w-5 h-5" />
 					Subscribe
 				</span>
 			</button>
