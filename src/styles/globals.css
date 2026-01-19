@@ -20,6 +20,8 @@
 @layer base {
 	html {
 		background-color: var(--bg-primary);
+		background: var(--bg-primary);
+		height: 100%;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
@@ -32,15 +34,36 @@
 	
 	body {
 		background-color: var(--bg-primary);
+		background: var(--bg-primary);
 		color: var(--text-primary);
+		min-height: 100vh;
+		position: relative;
 		-ms-overflow-style: none;
 		scrollbar-width: none;
+	}
+	
+	body::before {
+		content: '';
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: var(--bg-primary);
+		z-index: -1;
 	}
 	
 	body::-webkit-scrollbar {
 		display: none;
 		width: 0;
 		height: 0;
+	}
+	
+	main {
+		background-color: var(--bg-primary);
+		background: var(--bg-primary);
+		position: relative;
+		z-index: 1;
 	}
 }
 
