@@ -18,9 +18,31 @@
 }
 
 @layer base {
+	html {
+		background-color: var(--bg-primary);
+		height: 100%;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	
+	html::-webkit-scrollbar {
+		display: none;
+		width: 0;
+		height: 0;
+	}
+	
 	body {
 		background-color: var(--bg-primary);
 		color: var(--text-primary);
+		min-height: 100vh;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	
+	body::-webkit-scrollbar {
+		display: none;
+		width: 0;
+		height: 0;
 	}
 }
 
