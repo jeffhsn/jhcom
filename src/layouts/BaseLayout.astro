@@ -15,11 +15,12 @@ const { title, description } = Astro.props;
 		<meta charset="UTF-8" />
 		<meta name="description" content={description || title} />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/jpeg" href="/jh-logo-black.jpeg" />
+		<link rel="apple-touch-icon" href="/jh-logo-black.jpeg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="bg-black text-white min-h-screen">
 		<slot />
 	</body>
 </html>

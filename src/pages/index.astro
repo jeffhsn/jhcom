@@ -1,12 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Avatar from '../components/Avatar.astro';
+import LinkButton from '../components/LinkButton.astro';
+import Newsletter from '../components/Newsletter.astro';
+import Footer from '../components/Footer.astro';
+import { links } from '../config/links';
 ---
 
-<BaseLayout title="Home">
-	<main class="min-h-screen">
-		<div class="container mx-auto px-4 py-16">
-			<h1 class="text-4xl font-bold mb-8">Welcome</h1>
-			<p class="text-lg text-gray-700">Your personal website</p>
+<BaseLayout title="Home" description="Personal link page">
+	<main class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
+		<div class="w-full max-w-md mx-auto space-y-8 text-center">
+			<!-- Profile Picture -->
+			<div class="flex justify-center">
+				<Avatar src="/jh-logo-black.jpeg" alt="Jafar Hussein" class="w-24 h-24" />
+			</div>
+
+			<!-- Name -->
+			<h1 class="text-3xl font-bold" style="color: var(--text-primary);">Jafar Hussein</h1>
+
+			<!-- Description -->
+			<p class="text-lg" style="color: var(--text-secondary);">
+				Tech - Business - Religion
+			</p>
+
+			<!-- Links -->
+			<div class="space-y-4 pt-4">
+				{links.map((link) => (
+					<LinkButton href={link.href} label={link.label} external={link.external} />
+				))}
+			</div>
+
+			<!-- Newsletter -->
+			<div class="pt-8">
+				<Newsletter />
+			</div>
+
+			<!-- Footer -->
+			<Footer />
 		</div>
 	</main>
 </BaseLayout>

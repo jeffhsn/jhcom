@@ -1,3 +1,95 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* X.com-inspired Color System */
+:root {
+	--bg-primary: #000000;
+	--bg-secondary: #0a0a0a;
+	--text-primary: #ffffff;
+	--text-secondary: #e7e9ea;
+	--text-muted: #71767a;
+	--border-color: #2f3336;
+	--border-hover: #536471;
+	--accent-color: #1d9bf0;
+	--accent-hover: #1a8cd8;
+	--hover-bg: rgba(255, 255, 255, 0.1);
+	--hover-bg-strong: rgba(255, 255, 255, 0.15);
+}
+
+@layer base {
+	body {
+		background-color: var(--bg-primary);
+		color: var(--text-primary);
+	}
+}
+
+@layer components {
+	.link-button {
+		@apply w-full max-w-md mx-auto block px-6 py-4 rounded-xl text-center font-medium 
+		       transition-all duration-300 relative overflow-hidden;
+		background-color: var(--bg-secondary);
+		border: 1px solid var(--border-color);
+		color: var(--text-primary);
+	}
+	
+	.link-button::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 100%;
+		height: 100%;
+		background: linear-gradient(90deg, transparent, var(--hover-bg), transparent);
+		transition: left 0.5s;
+	}
+	
+	.link-button:hover {
+		border-color: var(--border-hover);
+		background-color: var(--hover-bg);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+	}
+	
+	.link-button:hover::before {
+		left: 100%;
+	}
+	
+	.link-button:active {
+		transform: translateY(0);
+	}
+	
+	.newsletter-input {
+		@apply w-full max-w-md px-4 py-3 rounded-lg transition-all duration-200;
+		background-color: var(--bg-secondary);
+		border: 1px solid var(--border-color);
+		color: var(--text-primary);
+	}
+	
+	.newsletter-input::placeholder {
+		color: var(--text-muted);
+	}
+	
+	.newsletter-input:focus {
+		outline: none;
+		border-color: var(--accent-color);
+		box-shadow: 0 0 0 3px rgba(29, 155, 240, 0.1);
+		background-color: var(--hover-bg);
+	}
+	
+	.newsletter-button {
+		@apply w-full max-w-md px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+		background-color: var(--accent-color);
+		color: var(--text-primary);
+	}
+	
+	.newsletter-button:hover {
+		background-color: var(--accent-hover);
+		transform: translateY(-1px);
+		box-shadow: 0 4px 12px rgba(29, 155, 240, 0.3);
+	}
+	
+	.newsletter-button:active {
+		transform: translateY(0);
+	}
+}

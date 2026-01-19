@@ -1,12 +1,12 @@
 export interface Link {
 	href: string;
 	label: string;
+	external?: boolean;
 }
 
 export const links: Link[] = [
-	{ href: '/', label: 'Home' },
-	{ href: '/about', label: 'About' },
-	{ href: '/notes', label: 'Notes' },
 	{ href: '/projects', label: 'Projects' },
-	{ href: '/gigs', label: 'Gigs' },
+	{ href: '/blog', label: 'Blog' },
+	// Add more links here as needed
+	// Example: { href: 'https://twitter.com/yourhandle', label: 'Twitter', external: true },
 ];
