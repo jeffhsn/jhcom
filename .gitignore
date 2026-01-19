@@ -61,8 +61,8 @@ config/secrets/
 
 # Cursor AI files
 .cursor/
-.cursorrules
 .cursorignore
+# Note: .cursorrules should be committed to share project guidelines
 
 # IDE and editor files
 .vscode/

@@ -1,0 +1,105 @@
+# Cursor Rules for jhcom
+
+## Project Context
+This is a personal website/portfolio built with:
+- **Astro** - Static site generator with component islands
+- **TypeScript** - Type-safe JavaScript
+- **Tailwind CSS** - Utility-first CSS framework
+- **MDX** - Markdown with JSX support
+
+## Code Style
+
+### Formatting
+- Use **tabs** for indentation (not spaces)
+- Use **single quotes** for strings
+- **No semicolons** at end of statements
+- **Trailing commas** in ES5 style
+- **Print width**: 100 characters
+
+### TypeScript
+- Use strict TypeScript configuration
+- Prefer explicit types over `any`
+- Use interfaces for object shapes
+- Use type imports when possible: `import type { ... }`
+
+### Astro Components
+- Use `.astro` file extension
+- Keep components focused and single-purpose
+- Use TypeScript interfaces for props
+- Prefer composition over complex components
+
+## File Organization
+
+### Component Structure
+Components are organized by feature in `src/components/`:
+- `ui/` - Reusable UI elements (buttons, avatars, links)
+- `layout/` - Layout components (containers, sections, footers)
+- `content/` - Content-specific components (newsletter, forms)
+
+### File Naming
+- Use **PascalCase** for component files: `LinkButton.astro`
+- Use **camelCase** for utility/config files: `links.ts`
+- Use **kebab-case** for pages: `blog.astro`
+
+### Import Organization
+1. Astro imports
+2. External dependencies
+3. Internal components (grouped by type)
+4. Types/interfaces
+5. Utilities/configs
+
+Example:
+```astro
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Avatar from '../components/ui/Avatar.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
+import { links } from '../config/links'
+---
+```
+
+## Best Practices
+
+### Components
+- Keep components small and focused
+- Use slots for content composition
+- Prefer props over global state
+- Use semantic HTML elements
+
+### Styling
+- Use Tailwind utility classes primarily
+- Use CSS custom properties for theming (defined in `globals.css`)
+- Avoid inline styles except for dynamic values
+- Keep component-specific styles in the component file
+
+### Content
+- Use Astro content collections for blog posts and projects
+- Follow the schema defined in `src/content/config.ts`
+- Use frontmatter for metadata
+
+### Performance
+- Optimize images (use Astro's Image component when needed)
+- Lazy load components when appropriate
+- Minimize JavaScript in components (Astro's default)
+
+## Project Structure
+```
+src/
+├── components/
+│   ├── ui/          # UI elements
+│   ├── layout/      # Layout components
+│   └── content/     # Content components
+├── config/          # App configuration
+├── content/         # Content collections
+├── layouts/         # Page layouts
+├── pages/           # Routes
+└── styles/          # Global styles
+```
+
+## When Making Changes
+- Follow existing code patterns
+- Update types when adding new props/interfaces
+- Keep components in their appropriate feature folders
+- Update README if structure changes significantly
+- Run `npm run type-check` before committing
+- Run `npm run format` to format code

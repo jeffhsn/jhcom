@@ -1,27 +1,29 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Avatar from '../components/Avatar.astro';
-import LinkButton from '../components/LinkButton.astro';
-import Newsletter from '../components/Newsletter.astro';
-import Footer from '../components/Footer.astro';
+import Avatar from '../components/ui/Avatar.astro';
+import LinkButton from '../components/ui/LinkButton.astro';
+import Newsletter from '../components/content/Newsletter.astro';
+import Footer from '../components/layout/Footer.astro';
 import { links } from '../config/links';
 ---
 
 <BaseLayout title="Home" description="Personal link page">
 	<main class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
 		<div class="w-full max-w-md mx-auto space-y-8 text-center">
-			<!-- Profile Picture -->
-			<div class="flex justify-center">
-				<Avatar src="/jh-logo-black.jpeg" alt="Jafar Hussein" class="w-24 h-24" />
-			</div>
+			<!-- Profile Picture and Name/Description -->
+			<div class="space-y-3">
+				<div class="flex justify-center">
+					<Avatar src="/jh-logo-black.jpeg" alt="Jafar Hussein" class="w-24 h-24" />
+				</div>
 
-		<!-- Name and Description -->
-		<div class="space-y-1">
-			<h1 class="text-3xl font-bold" style="color: var(--text-primary);">Jafar Hussein</h1>
-			<p class="text-lg" style="color: var(--text-secondary);">
-				Tech - Business - Islam
-			</p>
-		</div>
+				<!-- Name and Description -->
+				<div class="space-y-1">
+					<h1 class="text-3xl font-bold" style="color: var(--text-primary);">Jafar Hussein</h1>
+					<p class="text-lg" style="color: var(--text-secondary);">
+						Tech - Business - Islam
+					</p>
+				</div>
+			</div>
 
 			<!-- Links -->
 			<div class="space-y-4 pt-4">
