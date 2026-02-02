@@ -1,44 +1,192 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Avatar from '../components/ui/Avatar.astro';
-import LinkButton from '../components/ui/LinkButton.astro';
-import Newsletter from '../components/content/Newsletter.astro';
-import Footer from '../components/layout/Footer.astro';
-import { links } from '../config/links';
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Avatar from '../components/ui/Avatar.astro'
+import LinkButton from '../components/ui/LinkButton.astro'
+import Newsletter from '../components/content/Newsletter.astro'
+import Footer from '../components/layout/Footer.astro'
+import { Icon } from 'astro-icon/components'
+import { socialLinks } from '../config/links'
+import { getCollection } from 'astro:content'
+
+const projects = await getCollection('projects')
+const sortedProjects = [...projects].sort(
+	(a, b) => new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+)
 ---
 
 <BaseLayout title="Home" description="Personal link page">
-	<main class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-		<div class="w-full max-w-md mx-auto space-y-8 text-center">
-			<!-- Profile Picture and Name/Description -->
-			<div class="space-y-3">
-				<div class="flex justify-center">
-					<Avatar src="/jh-logo-black.jpeg" alt="Jafar Hussein" class="w-24 h-24" />
+	<main class="min-h-screen flex flex-col items-center w-full">
+		<div
+			class="gbc-column min-h-screen w-full max-w-2xl mx-auto flex flex-col items-center px-4 py-12 border-x border-[var(--border-color)]"
+			style="background-color: var(--bg-secondary)"
+		>
+			<div class="w-full max-w-xl mx-auto space-y-8 text-center pt-4">
+				<!-- Profile Picture and Name/Description -->
+				<div class="space-y-3">
+					<div class="flex justify-center">
+						<Avatar src="/jh-logo-black.jpeg" alt="Jafar Hussein" class="w-24 h-24" />
+					</div>
+
+					<!-- Name and Description -->
+					<div class="space-y-1">
+						<h1 class="text-3xl font-bold" style="color: var(--text-primary);">Jafar Hussein</h1>
+						<p class="text-lg" style="color: var(--text-secondary);">
+							Tech - Business - Islam
+						</p>
+					</div>
 				</div>
 
-				<!-- Name and Description -->
-				<div class="space-y-1">
-					<h1 class="text-3xl font-bold" style="color: var(--text-primary);">Jafar Hussein</h1>
-					<p class="text-lg" style="color: var(--text-secondary);">
-						Tech - Business - Islam
-					</p>
+				<!-- Project cards: X.com-style carousel, centered -->
+				<div class="w-full pt-4 flex flex-col items-center">
+					<h2 class="text-sm font-semibold mb-3" style="color: var(--text-muted);">
+						Projects
+					</h2>
+					{sortedProjects.length > 0 ? (
+						<div class="relative w-full">
+							<div
+								id="projects-scroll"
+								class="carousel-scroll w-full overflow-x-auto overflow-y-hidden scroll-smooth snap-x snap-mandatory"
+							>
+								<div class="flex flex-nowrap gap-4 pb-2 px-4 min-w-min">
+									{sortedProjects.map((project) => (
+										<a
+											href={`/projects/${project.id}`}
+											class="project-card flex min-w-[200px] max-w-[200px] shrink-0 flex-col rounded-lg border transition-colors hover:border-[var(--border-hover)] snap-center snap-always"
+											style="
+												background-color: #1a1a1a;
+												border-color: var(--border-color);
+												padding: 1rem 1.25rem;
+											"
+										>
+											{project.data.image ? (
+												<img
+													src={project.data.image}
+													alt=""
+													class="mb-3 h-24 w-full rounded object-cover"
+												/>
+											) : (
+												<div
+													class="mb-3 h-24 w-full rounded flex items-center justify-center text-2xl"
+													style="background: var(--border-color); color: var(--text-muted);"
+												>
+													{project.data.title.charAt(0)}
+												</div>
+											)}
+											<h2 class="font-semibold text-sm truncate" style="color: var(--text-primary);">
+												{project.data.title}
+											</h2>
+										</a>
+									))}
+								</div>
+							</div>
+							<button
+								type="button"
+								aria-label="Previous projects"
+								data-carousel-prev
+								class="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center border transition-colors hover:bg-[var(--hover-bg)]"
+								style="
+									background-color: var(--bg-secondary);
+									border-color: var(--border-color);
+									color: var(--text-primary);
+								"
+							>
+								<Icon name="heroicons:chevron-left" class="w-5 h-5" />
+							</button>
+							<button
+								type="button"
+								aria-label="Next projects"
+								data-carousel-next
+								class="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center border transition-colors hover:bg-[var(--hover-bg)]"
+								style="
+									background-color: var(--bg-secondary);
+									border-color: var(--border-color);
+									color: var(--text-primary);
+								"
+							>
+								<Icon name="heroicons:chevron-right" class="w-5 h-5" />
+							</button>
+						</div>
+					) : (
+						<p class="text-left text-sm" style="color: var(--text-muted);">
+							No projects yet.
+						</p>
+					)}
 				</div>
-			</div>
 
-			<!-- Links -->
-			<div class="space-y-4 pt-4">
-				{links.map((link) => (
-					<LinkButton href={link.href} label={link.label} external={link.external} />
-				))}
-			</div>
+				<!-- Social links -->
+				<div class="links-wrap space-y-4 pt-4">
+					{socialLinks.filter((s) => s.href).map((link) => (
+						<LinkButton
+							href={link.href!}
+							label={link.label}
+							external={true}
+							icon={link.icon}
+						/>
+					))}
+				</div>
 
-			<!-- Newsletter -->
-			<div class="pt-8">
-				<Newsletter />
-			</div>
+				<!-- Newsletter -->
+				<div class="pt-8">
+					<Newsletter />
+				</div>
 
-			<!-- Footer -->
-			<Footer />
+				<!-- Footer -->
+				<Footer />
+			</div>
 		</div>
 	</main>
+	<script>
+		const scrollEl = document.getElementById('projects-scroll')
+		const prevBtn = document.querySelector('[data-carousel-prev]')
+		const nextBtn = document.querySelector('[data-carousel-next]')
+		if (scrollEl && prevBtn && nextBtn) {
+			const step = 224
+			prevBtn.addEventListener('click', () => {
+				scrollEl.scrollBy({ left: -step, behavior: 'smooth' })
+			})
+			nextBtn.addEventListener('click', () => {
+				scrollEl.scrollBy({ left: step, behavior: 'smooth' })
+			})
+
+			// Drag-to-scroll
+			let isDragging = false
+			let didDrag = false
+			let startX = 0
+			let startScrollLeft = 0
+			const onDown = (e: MouseEvent) => {
+				isDragging = true
+				didDrag = false
+				startX = e.clientX
+				startScrollLeft = scrollEl.scrollLeft
+				scrollEl.style.cursor = 'grabbing'
+				scrollEl.style.userSelect = 'none'
+				e.preventDefault()
+			}
+			const onMove = (e: MouseEvent) => {
+				if (!isDragging) return
+				didDrag = true
+				scrollEl.scrollLeft = startScrollLeft - (e.clientX - startX)
+			}
+			const onUp = () => {
+				if (didDrag) {
+					scrollEl.addEventListener(
+						'click',
+						(e) => {
+							e.preventDefault()
+							e.stopPropagation()
+						},
+						{ capture: true, once: true }
+					)
+				}
+				isDragging = false
+				didDrag = false
+				scrollEl.style.cursor = ''
+				scrollEl.style.userSelect = ''
+			}
+			scrollEl.addEventListener('mousedown', onDown)
+			document.addEventListener('mousemove', onMove)
+			document.addEventListener('mouseup', onUp)
+			scrollEl.addEventListener('mouseleave', onUp)
+		}
+	</script>
 </BaseLayout>

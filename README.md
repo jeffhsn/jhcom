@@ -52,17 +52,21 @@ Personal website and portfolio for Jafar Hussein. Built with Astro, TypeScript, 
 ## 📦 Setup
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start development server:**
+
    ```bash
    npm run dev
    ```
+
    The site will be available at `http://localhost:4321`
 
 3. **Build for production:**
+
    ```bash
    npm run build
    ```
@@ -74,15 +78,15 @@ Personal website and portfolio for Jafar Hussein. Built with Astro, TypeScript, 
 
 ## 🧞 Available Scripts
 
-| Command           | Action                                           |
-| :---------------- | :----------------------------------------------- |
-| `npm run dev`     | Starts local dev server at `localhost:4321`      |
-| `npm run build`   | Build your production site to `./dist/`          |
-| `npm run preview` | Preview your build locally, before deploying     |
-| `npm run lint`    | Run ESLint to check code quality                 |
-| `npm run format`  | Format code with Prettier                        |
-| `npm run type-check` | Run TypeScript type checking                   |
-| `npm run astro`   | Run CLI commands like `astro add`, `astro check` |
+| Command              | Action                                           |
+| :------------------- | :----------------------------------------------- |
+| `npm run dev`        | Starts local dev server at `localhost:4321`      |
+| `npm run build`      | Build your production site to `./dist/`          |
+| `npm run preview`    | Preview your build locally, before deploying     |
+| `npm run lint`       | Run ESLint to check code quality                 |
+| `npm run format`     | Format code with Prettier                        |
+| `npm run type-check` | Run TypeScript type checking                     |
+| `npm run astro`      | Run CLI commands like `astro add`, `astro check` |
 
 ## 🛠️ Tech Stack
 

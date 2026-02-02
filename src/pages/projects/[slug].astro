@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import { getCollection, render } from 'astro:content'
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects')
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}))
+}
+
+const { project } = Astro.props
+const { Content } = await render(project)
+---
+
+<BaseLayout title={project.data.title} description={project.data.description}>
+	<main class="flex min-h-screen flex-col items-center px-4 py-12">
+		<div
+			class="gbc-column mx-auto w-full max-w-2xl space-y-6 border-x border-[var(--border-color)] px-4 py-8"
+			style="
+				background-color: var(--bg-secondary);
+				color: var(--text-primary);
+				min-height: 100vh;
+			"
+		>
+			<div class="flex items-center justify-between">
+				<h1 class="text-2xl font-bold">{project.data.title}</h1>
+				<a
+					href="/"
+					class="text-sm transition-colors hover:underline"
+					style="color: var(--text-muted);"
+				>
+					← Back to Home
+				</a>
+			</div>
+
+			{project.data.image && (
+				<img
+					src={project.data.image}
+					alt=""
+					class="w-full rounded-lg object-cover"
+					style="max-height: 240px;"
+				/>
+			)}
+
+			<p class="text-sm" style="color: var(--text-muted);">
+				{project.data.description}
+			</p>
+
+			{project.data.url && (
+				<a
+					href={project.data.url}
+					target="_blank"
+					rel="noopener noreferrer"
+					class="inline-block rounded-lg px-4 py-2 text-sm font-medium transition-colors"
+					style="
+						background-color: var(--accent-color);
+						color: #fff;
+					"
+				>
+					Visit project →
+				</a>
+			)}
+
+			<div class="prose prose-invert max-w-none pt-4">
+				<Content />
+			</div>
+		</div>
+	</main>
+</BaseLayout>

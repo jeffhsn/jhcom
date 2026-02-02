@@ -1,12 +1,15 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from 'astro-icon/components'
 ---
 
-<div class="w-full max-w-md mx-auto p-6 rounded-xl" style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);">
+<div
+	class="w-full rounded-xl p-6"
+	style="background-color: var(--bg-secondary); border: 1px solid var(--border-color);"
+>
 	<div class="space-y-4">
-		<div class="text-center mb-2">
+		<div class="mb-2 text-center">
 			<h3 class="text-lg font-semibold" style="color: var(--text-primary);">Stay Updated</h3>
-			<p class="text-sm mt-1" style="color: var(--text-muted);">
+			<p class="mt-1 text-sm" style="color: var(--text-muted);">
 				Get the latest updates delivered to your inbox
 			</p>
 		</div>
@@ -22,7 +25,7 @@ import { Icon } from 'astro-icon/components';
 			</div>
 			<button type="submit" class="newsletter-button">
 				<span class="flex items-center justify-center gap-2">
-					<Icon name="heroicons:envelope" class="w-5 h-5" />
+					<Icon name="heroicons:envelope" class="h-5 w-5" />
 					Subscribe
 				</span>
 			</button>

@@ -1,12 +1,41 @@
+export type LinkIcon =
+	| 'projects'
+	| 'x'
+	| 'youtube'
+	| 'github'
+	| 'discord';
+
 export interface Link {
 	href: string;
 	label: string;
 	external?: boolean;
+	icon?: LinkIcon;
 }
 
-export const links: Link[] = [
-	{ href: '/projects', label: 'Projects' },
-	{ href: '/blog', label: 'Blog' },
-	// Add more links here as needed
-	// Example: { href: 'https://twitter.com/yourhandle', label: 'Twitter', external: true },
+export interface SocialLink {
+	href?: string;
+	label: string;
+	icon:
+		| 'x'
+		| 'linkedin'
+		| 'instagram'
+		| 'github'
+		| 'youtube'
+		| 'link'
+		| 'bluesky'
+		| 'threads'
+		| 'tiktok'
+		| 'discord'
+		| 'telegram'
+		| 'spotify'
+		| 'medium';
+}
+
+export const links: Link[] = [];
+
+export const socialLinks: SocialLink[] = [
+	{ label: 'X', icon: 'x', href: 'https://x.com' },
+	{ label: 'YouTube', icon: 'youtube', href: 'https://youtube.com' },
+	{ label: 'GitHub', icon: 'github', href: 'https://github.com' },
+	{ label: 'Discord', icon: 'discord', href: 'https://discord.com' },
 ];

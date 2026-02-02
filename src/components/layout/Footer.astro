@@ -1,9 +1,14 @@
 ---
-const currentYear = new Date().getFullYear();
+const currentYear = new Date().getFullYear()
 ---
 
-<footer class="pt-8 mt-auto">
-	<div class="text-center text-white/40 text-sm">
+<footer class="mt-auto pt-8">
+	<div class="text-center text-sm space-y-2" style="color: var(--text-muted);">
 		<p>&copy; {currentYear} All rights reserved.</p>
+		<p>
+			<a href="/imprint" class="hover:underline" style="color: inherit;">Imprint</a>
+			<span class="mx-2">·</span>
+			<a href="/privacy" class="hover:underline" style="color: inherit;">Privacy</a>
+		</p>
 	</div>
 </footer>

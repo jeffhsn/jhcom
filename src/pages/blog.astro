@@ -1,20 +1,13 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro'
 ---
 
 <BaseLayout title="Blog" description="Jafar Hussein's Blog">
-	<main class="min-h-screen flex flex-col items-center justify-center px-4 py-12">
-		<div class="w-full max-w-2xl mx-auto text-center space-y-6">
+	<main class="flex min-h-screen flex-col items-center justify-center px-4 py-12">
+		<div class="mx-auto w-full max-w-2xl space-y-6 text-center">
 			<h1 class="text-4xl font-bold" style="color: var(--text-primary);">Blog</h1>
-			<p class="text-lg" style="color: var(--text-secondary);">
-				Coming soon...
-			</p>
-			<a
-				href="/"
-				class="link-button inline-block mt-8"
-			>
-				← Back to Home
-			</a>
+			<p class="text-lg" style="color: var(--text-secondary);">Coming soon...</p>
+			<a href="/" class="link-button mt-8 inline-block"> ← Back to Home </a>
 		</div>
 	</main>
 </BaseLayout>
