@@ -1,9 +1,10 @@
 import type { Config } from 'tailwindcss'
+import tailwindcssAnimate from 'tailwindcss-animate'
 
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+	content: ['./src/**/*.{ts,tsx,mdx}'],
 	theme: {
 		extend: {},
 	},
-	plugins: [],
+	plugins: [tailwindcssAnimate],
 } satisfies Config

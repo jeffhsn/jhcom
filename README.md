@@ -1,51 +1,27 @@
 # jhcom
 
-Personal website and portfolio for Jafar Hussein. Built with Astro, TypeScript, and Tailwind CSS.
+Personal website and portfolio for Jafar Hussein. Built with Next.js (App Router), TypeScript, and Tailwind CSS.
 
 ## 🚀 Project Structure
 
 ```
 /
-├── config/              # Code quality configuration files (backups)
-│   ├── .prettierrc
-│   ├── .eslintrc.cjs
-│   ├── .editorconfig
-│   └── .prettierignore
 ├── public/              # Static assets (images, fonts, etc.)
 │   └── jh-logo-black.jpeg
 ├── src/
-│   ├── components/      # Reusable Astro components (organized by feature)
-│   │   ├── ui/          # UI elements
-│   │   │   ├── Avatar.astro
-│   │   │   ├── LinkButton.astro
-│   │   │   └── LinkItem.astro
-│   │   ├── layout/      # Layout components
-│   │   │   ├── Container.astro
-│   │   │   ├── Footer.astro
-│   │   │   └── Section.astro
-│   │   └── content/     # Content-specific components
-│   │       └── Newsletter.astro
-│   ├── config/          # Application configuration
-│   │   └── links.ts     # Navigation links configuration
-│   ├── content/         # Content collections (MDX/Markdown)
-│   │   ├── config.ts    # Content collection schemas
-│   │   ├── notes/       # Blog posts/notes
-│   │   └── projects/    # Project showcase
-│   ├── layouts/         # Page layout templates
-│   │   └── BaseLayout.astro
-│   ├── pages/           # Routes (file-based routing)
-│   │   ├── index.astro  # Home page
-│   │   ├── blog.astro   # Blog listing page
-│   │   └── projects.astro # Projects listing page
-│   └── styles/          # Global styles
-│       └── globals.css
-├── .prettierrc          # Prettier config (must be at root)
-├── .eslintrc.cjs        # ESLint config (must be at root)
-├── .editorconfig        # Editor config (must be at root)
-├── .prettierignore      # Prettier ignore patterns
-├── astro.config.mjs     # Astro configuration
-├── tailwind.config.ts   # Tailwind CSS configuration
-├── tsconfig.json        # TypeScript configuration
+│   ├── app/             # Next.js App Router routes and layouts
+│   │   ├── (public)/    # Public-facing pages ("outside wall")
+│   │   ├── (private)/   # Private pages ("inside")
+│   │   └── globals.css  # Global styles
+│   ├── components/      # Reusable React components
+│   ├── config/          # App configuration
+│   ├── content/         # Content (optional)
+│   └── lib/             # Shared utilities/data
+├── .eslintrc.json       # ESLint config
+├── next.config.mjs      # Next.js config
+├── postcss.config.cjs   # PostCSS config
+├── tailwind.config.ts   # Tailwind CSS config
+├── tsconfig.json        # TypeScript config
 └── package.json         # Dependencies and scripts
 ```
 
@@ -54,63 +30,57 @@ Personal website and portfolio for Jafar Hussein. Built with Astro, TypeScript, 
 1. **Install dependencies:**
 
    ```bash
-   npm install
+   bun install
    ```
 
 2. **Start development server:**
 
    ```bash
-   npm run dev
+   bun dev
    ```
 
-   The site will be available at `http://localhost:4321`
+   The site will be available at `http://localhost:3000`
 
 3. **Build for production:**
 
    ```bash
-   npm run build
+   bun run build
    ```
 
-4. **Preview production build:**
+4. **Start production server:**
+
    ```bash
-   npm run preview
+   bun run start
    ```
 
 ## 🧞 Available Scripts
 
-| Command              | Action                                           |
-| :------------------- | :----------------------------------------------- |
-| `npm run dev`        | Starts local dev server at `localhost:4321`      |
-| `npm run build`      | Build your production site to `./dist/`          |
-| `npm run preview`    | Preview your build locally, before deploying     |
-| `npm run lint`       | Run ESLint to check code quality                 |
-| `npm run format`     | Format code with Prettier                        |
-| `npm run type-check` | Run TypeScript type checking                     |
-| `npm run astro`      | Run CLI commands like `astro add`, `astro check` |
+| Command         | Action                               |
+| :-------------- | :----------------------------------- |
+| `bun dev`       | Starts dev server at `localhost:3000` |
+| `bun run build` | Build for production                 |
+| `bun run start` | Start production server              |
+| `bun run lint`  | Run ESLint                           |
 
 ## 🛠️ Tech Stack
 
-- **[Astro](https://astro.build)** - Web framework for content-driven websites
+- **[Next.js](https://nextjs.org/)** - App Router
 - **[TypeScript](https://www.typescriptlang.org/)** - Type safety
-- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first CSS framework
-- **[MDX](https://mdxjs.com/)** - Markdown with JSX components
-- **[Vercel](https://vercel.com/)** - Deployment platform
+- **[Tailwind CSS](https://tailwindcss.com/)** - Utility-first styling
+- **[shadcn/ui](https://ui.shadcn.com/)** - UI primitives (copied components)
+- **[Lucide](https://lucide.dev/)** - Icon set
+- **[Framer Motion](https://www.framer.com/motion/)** - Animations
+- **[Convex](https://convex.dev/)** - Backend (ready to configure)
+- **[Clerk](https://clerk.com/)** - Auth (ready to configure)
 
-## 📝 Content Management
+## 🔐 Optional Environment Variables
 
-Content is managed through Astro's content collections:
+These are optional for now; the app runs without them.
 
-- **Notes/Blog Posts**: Add markdown files to `src/content/notes/`
-- **Projects**: Add markdown files to `src/content/projects/`
-
-Each content file should include frontmatter matching the schema defined in `src/content/config.ts`.
+- `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY`
+- `CLERK_SECRET_KEY`
+- `NEXT_PUBLIC_CONVEX_URL`
 
 ## 🎨 Styling
 
-Global styles are in `src/styles/globals.css`. The project uses Tailwind CSS for utility classes and CSS custom properties for theming.
-
-## 📚 Learn More
-
-- [Astro Documentation](https://docs.astro.build)
-- [Astro Discord](https://astro.build/chat)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
+Global styles are in `src/app/globals.css`. The project uses Tailwind CSS plus CSS custom properties for theming.
